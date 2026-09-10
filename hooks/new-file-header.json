@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "New File Header",
+      "trigger": "PostFileCreate",
+      "description": "When a new .js file is created, adds a standard BrickBlast header comment block at the top.",
+      "matcher": "\\.js$",
+      "action": {
+        "type": "agent",
+        "prompt": "A new JavaScript file has been created for the BrickBlast project.\n\nAutomatically add the following header comment at the top of the file:\n\n```javascript\n/**\n * BrickBlast - [filename]\n *\n * [Brief description of what this file contains - infer from filename]\n *\n * Part of the BrickBlast browser game project.\n * Uses vanilla JavaScript with the HTML5 Canvas API.\n */\n```"
+      }
+    }
+  ]
+}

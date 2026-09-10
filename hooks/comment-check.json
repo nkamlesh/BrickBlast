@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Comment Check",
+      "trigger": "PostFileSave",
+      "description": "On saving any .js file, checks for JSDoc comments, missing inline comments on complex logic, and leftover console.log statements.",
+      "matcher": "\\.js$",
+      "action": {
+        "type": "agent",
+        "prompt": "When this JavaScript file is saved, review it and check:\n\n1. Does every function have a JSDoc comment explaining what it does?\n2. Are there any complex logic blocks that lack inline comments?\n3. Are there any `console.log` statements that look like debugging leftovers?\n\nIf any of these issues are found, provide a brief, friendly summary of what needs attention. Keep the message short — just flag the issues, don't automatically fix them unless asked.\n\nFormat your response as:\n- ✅ Comments: [status]\n- ⚠️ Debug logs: [status]\n- 💡 Suggestions: [any quick wins]"
+      }
+    }
+  ]
+}

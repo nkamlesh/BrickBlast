@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Game Logic Check",
+      "trigger": "PostFileSave",
+      "description": "Sanity-checks game.js on save: game loop structure, canvas clearing, event listener placement, and score DOM updates.",
+      "matcher": "game\\.js$",
+      "action": {
+        "type": "agent",
+        "prompt": "The main game file (game.js) has been saved. Perform a quick sanity check:\n\n1. **Game Loop**: Is there a requestAnimationFrame loop? Is it properly structured to avoid memory leaks (i.e., does it cancel the previous frame before requesting a new one)?\n\n2. **Canvas Context**: Is the 2D context being cleared at the start of each frame with `ctx.clearRect()`?\n\n3. **Event Listeners**: Are keyboard/mouse event listeners being added only once (not inside the game loop)?\n\n4. **Score Updates**: When the score changes, is the DOM being updated to reflect the new value?\n\nIf everything looks good, respond with a single ✅. If there are concerns, briefly list them."
+      }
+    }
+  ]
+}
